@@ -30,17 +30,18 @@ public class Main {
         List<Integer> addFive = transformedList(testIntArray, num -> num + 5);
         System.out.println(addFive);
 
-//        List<Integer> wordLengths = transformedList(testArray, String::length);
+        List<Integer> wordLengths = transformedList(testArray, String::length);
+        System.out.println(wordLengths);
         // ??
     }
 
-    public static <T> List<T> allMatches(List<T> list, Predicate<T> predicate) {
+    private static <T> List<T> allMatches(List<T> list, Predicate<T> predicate) {
         return list.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
     }
 
-    public static <T> List<T> transformedList(List<T> list, Function<T, T> function) {
+    private static <T,U> List<U> transformedList(List<T> list, Function<T, U> function) {
         return list.stream()
                 .map(function)
                 .collect(Collectors.toList());
